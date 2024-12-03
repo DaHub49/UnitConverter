@@ -40,7 +40,7 @@ class MainActivity : ComponentActivity() {
 fun UnitConverter(){
     Column {
         // Here all the UI elements will b e stacked below each other:
-        //Greeting("Android")
+        Greeting("Android")
         //Greeting("Android")
 
         // Here all the elements will be stacked alongside each other:
