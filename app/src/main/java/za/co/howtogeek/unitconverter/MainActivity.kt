@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                //    content = { innerPadding -> 8.
+                    //    content = { innerPadding -> 8.
                     UnitConverter()
                 }
             }
@@ -56,6 +56,9 @@ fun UnitConverter(){
 
         }
         Text("Result:")
+        Row {
+            Text("[Result]")
+        }
     }
 }
 
