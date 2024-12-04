@@ -1,20 +1,22 @@
 package za.co.howtogeek.unitconverter
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import za.co.howtogeek.unitconverter.ui.theme.UnitConverterTheme
 
@@ -54,17 +56,21 @@ fun UnitConverter(){
              */
         })
 
-        // Here all the elements will be stacked alongside each other:
+        // Row: Here all the elements will be stacked alongside each other:
         Row {
-
-        }
-        Row {
-            val context = LocalContext.current
-            Button(onClick = {
-                Toast.makeText(context,
-                    "Thanks for clicking, click again!",
-                    Toast.LENGTH_LONG).show() }) {
-                Text("Click Me!")
+            Box{
+                Button(onClick = { /*TODO*/ }){
+                    Text("Select")
+                    Icon(Icons.Default.ArrowDropDown,
+                        contentDescription = "Arrow Down") // contentDescription for accessibility
+                }
+            }
+            Box{
+                Button(onClick = { /*TODO*/ }){
+                    Text("Select")
+                    Icon(Icons.Default.ArrowDropDown,
+                        contentDescription = "Arrow Down") // contentDescription for accessibility
+                }
             }
         }
         Text("[Result]")
