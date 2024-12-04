@@ -8,7 +8,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -40,29 +43,30 @@ class MainActivity : ComponentActivity() {
 fun UnitConverter(){
     Column {
         // Here all the UI elements will b e stacked below each other:
-        Greeting("Android")
-        //Greeting("Android")
+        /* There are 3 different types of text fields:
+           (1) Text("Unit Converter")
+           (2) BasicTextField()
+           (3) OutlinedTextField()
+         */
+        Text("Unit Converter")
+        OutlinedTextField(value = "", onValueChange = {
+            /*
+            {} implement logic here if needed
+            Anonymous functions are single-use functions that don't have names.
+             */
+        })
 
         // Here all the elements will be stacked alongside each other:
         Row {
-            Greeting("Android")
-            Greeting("Android")
+
         }
     }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
 }
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     UnitConverterTheme {
-        Greeting("Android")
+
     }
 }
