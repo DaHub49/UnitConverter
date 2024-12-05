@@ -3,6 +3,7 @@ package za.co.howtogeek.unitconverter
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,6 +17,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import za.co.howtogeek.unitconverter.ui.theme.UnitConverterTheme
@@ -41,7 +43,12 @@ class MainActivity : ComponentActivity() {
 // Create new Composable with Columns:
 @Composable
 fun UnitConverter(){
-    Column {
+    Column (// modifier property inside the normal brackets:
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+
         // Here all the UI elements will b e stacked below each other:
         /* There are 3 different types of text fields:
            (1) Text("Unit Converter")
