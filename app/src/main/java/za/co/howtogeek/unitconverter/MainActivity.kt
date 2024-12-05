@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
@@ -58,8 +59,10 @@ fun UnitConverter(){
            (2) BasicTextField()
            (3) OutlinedTextField()
          */
-        Text("Unit Converter")
-        Spacer(modifier = Modifier.height(16.dp))
+        Text(
+            text = "Unit Converter",
+            modifier = Modifier.padding(100.dp))
+        //Spacer(modifier = Modifier.height(16.dp))
         OutlinedTextField(value = "", onValueChange = {
             /*
             {} implement logic here if needed
