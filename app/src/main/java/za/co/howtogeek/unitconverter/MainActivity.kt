@@ -59,10 +59,9 @@ fun UnitConverter(){
            (2) BasicTextField()
            (3) OutlinedTextField()
          */
-        Text(
-            text = "Unit Converter",
-            modifier = Modifier.padding(100.dp))
-        //Spacer(modifier = Modifier.height(16.dp))
+        Text("Unit Converter")
+            //modifier = Modifier.padding(100.dp))
+        Spacer(modifier = Modifier.height(16.dp))
         OutlinedTextField(value = "", onValueChange = {
             /*
             {} implement logic here if needed
