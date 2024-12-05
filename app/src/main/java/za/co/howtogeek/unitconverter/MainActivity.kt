@@ -103,8 +103,6 @@ class MainActivity : ComponentActivity() {
                 // Add a Spacer between the 2 boxes:
                 Spacer(modifier = Modifier.width(16.dp))
 
-
-
                 Box {
                     Button(onClick = { /*TODO*/ }) {
                         Text("Select")
@@ -132,9 +130,9 @@ class MainActivity : ComponentActivity() {
                         )
                     }
                 }
-                Spacer(modifier = Modifier.height(16.dp))
-                Text("[Result]")
             }
+            Spacer(modifier = Modifier.height(16.dp))
+            Text("[Result]")
         }
     }
 
