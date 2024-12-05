@@ -7,7 +7,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
@@ -20,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import za.co.howtogeek.unitconverter.ui.theme.UnitConverterTheme
 
 class MainActivity : ComponentActivity() {
@@ -56,13 +59,14 @@ fun UnitConverter(){
            (3) OutlinedTextField()
          */
         Text("Unit Converter")
+        Spacer(modifier = Modifier.height(16.dp))
         OutlinedTextField(value = "", onValueChange = {
             /*
             {} implement logic here if needed
             Anonymous functions are single-use functions that don't have names.
              */
         })
-
+        Spacer(modifier = Modifier.height(16.dp))
         // Row: Here all the elements will be stacked alongside each other:
         Row {
             Box{
@@ -80,6 +84,7 @@ fun UnitConverter(){
                 }
             }
         }
+        Spacer(modifier = Modifier.height(16.dp))
         Text("[Result]")
     }
 }
