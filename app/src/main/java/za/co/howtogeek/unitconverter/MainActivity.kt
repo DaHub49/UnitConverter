@@ -72,13 +72,13 @@ class MainActivity : ComponentActivity() {
             Spacer(modifier = Modifier.height(16.dp))
             // Row: Here all the elements will be stacked alongside each other:
             Row {
+                // Box1:
                 Box {
                     Button(onClick = { /*TODO*/ }) {
                         Text("Select")
                         Icon(
                             Icons.Default.ArrowDropDown,
-                            contentDescription = "Arrow Down"
-                        ) // contentDescription for accessibility
+                            contentDescription = "Arrow Down") // contentDescription for accessibility
                     }
                     DropdownMenu(expanded = false, onDismissRequest = { /*TODO*/ }) {
                         DropdownMenuItem(
@@ -103,6 +103,7 @@ class MainActivity : ComponentActivity() {
                 // Add a Spacer between the 2 boxes:
                 Spacer(modifier = Modifier.width(16.dp))
 
+                // Box2:
                 Box {
                     Button(onClick = { /*TODO*/ }) {
                         Text("Select")
