@@ -59,6 +59,7 @@ class MainActivity : ComponentActivity() {
         var outputUnit by remember { mutableStateOf("Metres") }
         var inputExpanded by remember { mutableStateOf(false) }
         var outputExpanded by remember { mutableStateOf(false) }
+        // The multiplier:
         val conversionFactor = remember { mutableStateOf(0.01) }
 
         Column(// modifier property inside the normal brackets:
@@ -87,16 +88,22 @@ class MainActivity : ComponentActivity() {
             Spacer(modifier = Modifier.height(16.dp))
             // Row: Here all the elements will be stacked alongside each other:
             Row {
+                // Input Box
                 Box {
-                    Button(onClick = { /*TODO*/ }) {
+                    // Inout Button
+                    Button(onClick = { inputExpanded = true }) {
                         Text("Select")
                         Icon(Icons.Default.ArrowDropDown,
                             contentDescription = "Arrow Down") // contentDescription for accessibility
                     }
-                    DropdownMenu(expanded = false, onDismissRequest = { /*TODO*/ }) {
+                    DropdownMenu(expanded = inputExpanded, onDismissRequest = { inputExpanded = false }) {
                         DropdownMenuItem(
                             text = { Text("Centimetres") },
-                            onClick = { /*TODO*/ }
+                            onClick = {
+                                inputExpanded = false
+                                inputUnit = "Centimetres"
+                                conversionFactor.value = 0.01
+                            }
                         )
                         DropdownMenuItem(
                             text = { Text("Metres") },
@@ -116,16 +123,17 @@ class MainActivity : ComponentActivity() {
                 // Add a Spacer between the 2 boxes:
                 Spacer(modifier = Modifier.width(16.dp))
 
-                // Box2 (other DropdownMenu here):
+                // Box2 (output box):
                 Box {
-                    Button(onClick = { /*TODO*/ }) {
+                    // Output Button:
+                    Button(onClick = { outputExpanded = true }) {
                         Text("Select")
                         Icon(
                             Icons.Default.ArrowDropDown,
                             contentDescription = "Arrow Down"
                         ) // contentDescription for accessibility
                     }
-                    DropdownMenu(expanded = false, onDismissRequest = { /*TODO*/ }) {
+                    DropdownMenu(expanded = outputExpanded, onDismissRequest = {outputExpanded = false }) {
                         DropdownMenuItem(
                             text = { Text("Centimetres") },
                             onClick = { /*TODO*/ }
