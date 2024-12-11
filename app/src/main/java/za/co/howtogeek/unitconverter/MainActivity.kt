@@ -31,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import za.co.howtogeek.unitconverter.ui.theme.UnitConverterTheme
+import kotlin.math.roundToInt
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,6 +62,13 @@ class MainActivity : ComponentActivity() {
         var outputExpanded by remember { mutableStateOf(false) }
         // The multiplier:
         val conversionFactor = remember { mutableStateOf(0.01) }
+
+        // Create the convertUnits inside the UnitConverter() composable:
+        fun convertUnits(){
+            val inputValueDouble = inputValue.toDoubleOrNull() ?: 0.0 // ?: -elvis operator: return 0.0 if invalid input
+            val result = (inputValueDouble * conversionFactor.value * 100).roundToInt() / 100.0 // not the "=" because not using "by" keyword in the declaration
+            outputValue = result.toString()
+        }
 
         Column(// modifier property inside the normal brackets:
             modifier = Modifier.fillMaxSize(),
@@ -103,19 +111,35 @@ class MainActivity : ComponentActivity() {
                                 inputExpanded = false
                                 inputUnit = "Centimetres"
                                 conversionFactor.value = 0.01
+                                convertUnits()
                             }
                         )
                         DropdownMenuItem(
                             text = { Text("Metres") },
-                            onClick = { /*TODO*/ }
+                            onClick = {
+                                inputExpanded = false
+                                inputUnit = "Metres"
+                                conversionFactor.value = 1.0
+                                convertUnits()
+                            }
                         )
                         DropdownMenuItem(
                             text = { Text("Feet") },
-                            onClick = { /*TODO*/ }
+                            onClick = {
+                                inputExpanded = false
+                                inputUnit = "Feet"
+                                conversionFactor.value = 0.3048
+                                convertUnits()
+                            }
                         )
                         DropdownMenuItem(
                             text = { Text("Millimetres") },
-                            onClick = { /*TODO*/ }
+                            onClick = {
+                                inputExpanded = false
+                                inputUnit = "Millimetres"
+                                conversionFactor.value = 0.001
+                                convertUnits()
+                            }
                         )
                     }
                 } // (DropdownMenu here)
