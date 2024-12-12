@@ -93,9 +93,10 @@ class MainActivity : ComponentActivity() {
             OutlinedTextField(
                 value = inputValue,
                 onValueChange = { // {} implement logic here if needed. Anonymous functions are single-use functions that don't have names.
-                // The logic goes here for when the value of the OutLinedTextField changes
-                inputValue = it
-            }, //Add comma after onValueChange closing } to add other elements:
+                    // The logic goes here for when the value of the OutLinedTextField changes
+                    inputValue = it
+                    convertUnits()
+                }, //Add comma after onValueChange closing } to add other elements:
                 label = { Text("Enter value")}
             )
             Spacer(modifier = Modifier.height(16.dp))
@@ -168,7 +169,7 @@ class MainActivity : ComponentActivity() {
                             onClick = {
                                 outputExpanded = false
                                 outputUnit = "Centimetres"
-                                conversionFactor.value = 0.01
+                                outputConversionFactor.value = 0.01
                                 convertUnits()
                             }
                         )
@@ -177,7 +178,7 @@ class MainActivity : ComponentActivity() {
                             onClick = {
                                 outputExpanded = false
                                 outputUnit = "Metres"
-                                conversionFactor.value = 1.00
+                                outputConversionFactor.value = 1.00
                                 convertUnits() }
                         )
                         DropdownMenuItem(
@@ -185,7 +186,7 @@ class MainActivity : ComponentActivity() {
                             onClick = {
                                 outputExpanded = false
                                 outputUnit = "Feet"
-                                conversionFactor.value = 0.3048
+                                outputConversionFactor.value = 0.3048
                                 convertUnits()
                             }
                         )
@@ -194,7 +195,7 @@ class MainActivity : ComponentActivity() {
                             onClick = {
                                 outputExpanded = false
                                 outputUnit = "Millimetres"
-                                conversionFactor.value = 0.001
+                                outputConversionFactor.value = 0.001
                                 convertUnits()
                             }
                         )
