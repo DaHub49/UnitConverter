@@ -1,6 +1,7 @@
 package za.co.howtogeek.unitconverter
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
@@ -33,6 +34,8 @@ import androidx.compose.ui.unit.dp
 import za.co.howtogeek.unitconverter.ui.theme.UnitConverterTheme
 import kotlin.math.roundToInt
 
+val TAG: String = "MainActivity -> "
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,17 +59,19 @@ class MainActivity : ComponentActivity() {
 
         var inputValue by remember { mutableStateOf("") }
         var outputValue by remember { mutableStateOf("") }
-        var inputUnit by remember { mutableStateOf("Centimetres") }
+        var inputUnit by remember { mutableStateOf("Metres") }
         var outputUnit by remember { mutableStateOf("Metres") }
         var inputExpanded by remember { mutableStateOf(false) }
         var outputExpanded by remember { mutableStateOf(false) }
         // The multiplier:
-        val conversionFactor = remember { mutableStateOf(0.01) }
+        val conversionFactor = remember { mutableStateOf(1.00) }
+        val outputConversionFactor = remember { mutableStateOf(1.00) }
 
         // Create the convertUnits inside the UnitConverter() composable:
         fun convertUnits(){
             val inputValueDouble = inputValue.toDoubleOrNull() ?: 0.0 // ?: -elvis operator: return 0.0 if invalid input
-            val result = (inputValueDouble * conversionFactor.value * 100).roundToInt() / 100.0 // not the "=" because not using "by" keyword in the declaration
+            val result = (inputValueDouble * conversionFactor.value * 100 / outputConversionFactor.value).roundToInt() / 100.0 // not the "=" because not using "by" keyword in the declaration
+            Log.i(TAG, "convertUnits:  result.toString(): ${result.toString()}")
             outputValue = result.toString()
         }
 
@@ -98,9 +103,9 @@ class MainActivity : ComponentActivity() {
             Row {
                 // Input Box
                 Box {
-                    // Inout Button
+                    // Input Button
                     Button(onClick = { inputExpanded = true }) {
-                        Text("Select")
+                        Text(inputUnit)
                         Icon(Icons.Default.ArrowDropDown,
                             contentDescription = "Arrow Down") // contentDescription for accessibility
                     }
@@ -151,7 +156,7 @@ class MainActivity : ComponentActivity() {
                 Box {
                     // Output Button:
                     Button(onClick = { outputExpanded = true }) {
-                        Text("Select")
+                        Text(outputUnit)
                         Icon(
                             Icons.Default.ArrowDropDown,
                             contentDescription = "Arrow Down"
@@ -160,25 +165,44 @@ class MainActivity : ComponentActivity() {
                     DropdownMenu(expanded = outputExpanded, onDismissRequest = {outputExpanded = false }) {
                         DropdownMenuItem(
                             text = { Text("Centimetres") },
-                            onClick = { /*TODO*/ }
+                            onClick = {
+                                outputExpanded = false
+                                outputUnit = "Centimetres"
+                                conversionFactor.value = 0.01
+                                convertUnits()
+                            }
                         )
                         DropdownMenuItem(
                             text = { Text("Metres") },
-                            onClick = { /*TODO*/ }
+                            onClick = {
+                                outputExpanded = false
+                                outputUnit = "Metres"
+                                conversionFactor.value = 1.00
+                                convertUnits() }
                         )
                         DropdownMenuItem(
                             text = { Text("Feet") },
-                            onClick = { /*TODO*/ }
+                            onClick = {
+                                outputExpanded = false
+                                outputUnit = "Feet"
+                                conversionFactor.value = 0.3048
+                                convertUnits()
+                            }
                         )
                         DropdownMenuItem(
                             text = { Text("Millimetres") },
-                            onClick = { /*TODO*/ }
+                            onClick = {
+                                outputExpanded = false
+                                outputUnit = "Millimetres"
+                                conversionFactor.value = 0.001
+                                convertUnits()
+                            }
                         )
                     }
                 }
             }
             Spacer(modifier = Modifier.height(16.dp))
-            Text("[Result]")
+            Text(outputValue)
         }
     }
 
