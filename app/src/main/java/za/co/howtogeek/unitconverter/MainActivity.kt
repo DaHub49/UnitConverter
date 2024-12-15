@@ -87,7 +87,7 @@ class MainActivity : ComponentActivity() {
                (2) BasicTextField()
                (3) OutlinedTextField()
              */
-            Text("Unit Converter")
+            Text("Unit Converter",  style = MaterialTheme.typography.headlineLarge)
             //modifier = Modifier.padding(100.dp))
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(
