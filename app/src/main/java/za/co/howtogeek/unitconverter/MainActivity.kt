@@ -73,6 +73,7 @@ class MainActivity : ComponentActivity() {
             val result = (inputValueDouble * conversionFactor.value * 100 / outputConversionFactor.value).roundToInt() / 100.0 // not the "=" because not using "by" keyword in the declaration
             Log.i(TAG, "convertUnits:  result.toString(): ${result.toString()}")
             outputValue = result.toString()
+            outputValue = outputValue + " " + outputUnit
         }
 
         Column(// modifier property inside the normal brackets:
